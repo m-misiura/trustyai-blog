@@ -1,10 +1,10 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 
 const posts = (await getCollection('blog'))
 	.filter(post => post.data.track === 'engineering')
@@ -14,6 +14,11 @@ const posts = (await getCollection('blog'))
 const getImageUrl = (heroImage) => {
 	if (!heroImage) return '';
 	return heroImage.startsWith('/') ? `${import.meta.env.BASE_URL}/${heroImage.slice(1)}` : heroImage;
+};
+
+// Helper function to get the correct post URL for engineering posts
+const getPostUrl = (post) => {
+	return `${import.meta.env.BASE_URL}/engineering/${post.id.replace('engineering/', '')}`;
 };
 ---
 
@@ -119,7 +124,7 @@ const getImageUrl = (heroImage) => {
 					{
 						posts.map((post) => (
 							<li>
-								<a href={`/blog/${post.id}/`}>
+								<a href={getPostUrl(post)}>
 									<img width={720} height={360} src={getImageUrl(post.data.heroImage)} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
