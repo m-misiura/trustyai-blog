@@ -12,6 +12,12 @@ const posts = (await getCollection('blog')).sort(
 
 const researchPosts = posts.filter(post => post.data.track === 'research');
 const engineeringPosts = posts.filter(post => post.data.track === 'engineering');
+
+// Helper function to fix hero image URLs
+const getImageUrl = (heroImage) => {
+	if (!heroImage) return '';
+	return heroImage.startsWith('/') ? `${import.meta.env.BASE_URL}/${heroImage.slice(1)}` : heroImage;
+};
 ---
 
 <!doctype html>
@@ -108,7 +114,7 @@ const engineeringPosts = posts.filter(post => post.data.track === 'engineering')
 						researchPosts.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
+									<img width={720} height={360} src={getImageUrl(post.data.heroImage)} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />
@@ -127,7 +133,7 @@ const engineeringPosts = posts.filter(post => post.data.track === 'engineering')
 						engineeringPosts.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
+									<img width={720} height={360} src={getImageUrl(post.data.heroImage)} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />
