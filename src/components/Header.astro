@@ -6,12 +6,12 @@ import { SITE_TITLE } from '../consts';
 <header>
 	<nav>
 		<div class="site-branding">
-			<img src="/trustyai-logo.svg" alt="TrustyAI Logo" class="logo" />
-			<h2><a href="/">{SITE_TITLE}</a></h2>
+			<img src={`${import.meta.env.BASE_URL}/trustyai-logo.svg`} alt="TrustyAI Logo" class="logo" />
+			<h2><a href="./">{SITE_TITLE}</a></h2>
 		</div>
 		<div class="internal-links">
-			<HeaderLink href="/blog/research">Research</HeaderLink>
-			<HeaderLink href="/blog/engineering">Engineering</HeaderLink>
+			<HeaderLink href="blog/research">Research</HeaderLink>
+			<HeaderLink href="blog/engineering">Engineering</HeaderLink>
 			<HeaderLink href="https://trustyai-explainability.github.io/trustyai-site/main/main.html" target="_blank">Documentation</HeaderLink>
 		</div>
 		<div class="social-links">
