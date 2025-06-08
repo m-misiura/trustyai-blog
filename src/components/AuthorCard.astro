@@ -1,0 +1,129 @@
+---
+export interface Props {
+	name: string;
+	bio: string;
+	avatar?: string;
+	size?: 'small' | 'medium' | 'large';
+	showBio?: boolean;
+	href?: string;
+}
+
+const { name, bio, avatar, size = 'medium', showBio = true, href } = Astro.props;
+
+const sizeClasses = {
+	small: 'author-card-small',
+	medium: 'author-card-medium',
+	large: 'author-card-large'
+};
+---
+
+<div class={`author-card ${sizeClasses[size]}`}>
+	{href ? (
+		<a href={href} class="author-link">
+			{avatar && (
+				<img
+					src={avatar.startsWith('/') ? `${import.meta.env.BASE_URL}/${avatar.slice(1)}` : avatar}
+					alt={name}
+					class="author-avatar"
+				/>
+			)}
+			<div class="author-info">
+				<h3 class="author-name">{name}</h3>
+				{showBio && <p class="author-bio">{bio}</p>}
+			</div>
+		</a>
+	) : (
+		<>
+			{avatar && (
+				<img
+					src={avatar.startsWith('/') ? `${import.meta.env.BASE_URL}/${avatar.slice(1)}` : avatar}
+					alt={name}
+					class="author-avatar"
+				/>
+			)}
+			<div class="author-info">
+				<h3 class="author-name">{name}</h3>
+				{showBio && <p class="author-bio">{bio}</p>}
+			</div>
+		</>
+	)}
+</div>
+
+<style>
+	.author-card {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.author-link {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		text-decoration: none;
+		color: inherit;
+		width: 100%;
+	}
+
+	.author-avatar {
+		border-radius: 50%;
+		object-fit: cover;
+		flex-shrink: 0;
+	}
+
+	.author-info {
+		flex: 1;
+	}
+
+	.author-name {
+		margin: 0;
+		font-weight: 500;
+		color: rgb(var(--black));
+	}
+
+	.author-bio {
+		margin: 0.25rem 0 0 0;
+		color: rgb(var(--gray-dark));
+		line-height: 1.4;
+	}
+
+	/* Size variations */
+	.author-card-small .author-avatar {
+		width: 32px;
+		height: 32px;
+	}
+
+	.author-card-small .author-name {
+		font-size: 0.9rem;
+	}
+
+	.author-card-small .author-bio {
+		font-size: 0.8rem;
+	}
+
+	.author-card-medium .author-avatar {
+		width: 48px;
+		height: 48px;
+	}
+
+	.author-card-medium .author-name {
+		font-size: 1rem;
+	}
+
+	.author-card-medium .author-bio {
+		font-size: 0.9rem;
+	}
+
+	.author-card-large .author-avatar {
+		width: 64px;
+		height: 64px;
+	}
+
+	.author-card-large .author-name {
+		font-size: 1.2rem;
+	}
+
+	.author-card-large .author-bio {
+		font-size: 1rem;
+	}
+</style>
