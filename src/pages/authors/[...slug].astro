@@ -1,0 +1,223 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { render } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+
+export async function getStaticPaths() {
+	const authors = await getCollection('authors');
+	return authors.map((author) => ({
+		params: { slug: author.id },
+		props: author,
+	}));
+}
+
+type Props = CollectionEntry<'authors'>;
+
+const author = Astro.props;
+const { Content } = await render(author);
+
+// Get all blog posts by this author
+const allPosts = await getCollection('blog');
+const authorPosts = allPosts.filter(post =>
+	post.data.authors && post.data.authors.includes(author.id)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={author.data.name} description={author.data.bio || `Author profile for ${author.data.name}`} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="author-profile">
+				<div class="author-header">
+					{author.data.avatar && (
+						<img
+							src={author.data.avatar.startsWith('/') ? `${import.meta.env.BASE_URL}/${author.data.avatar.slice(1)}` : author.data.avatar}
+							alt={author.data.name}
+							class="author-avatar-large"
+						/>
+					)}
+					<div class="author-info">
+						<h1>{author.data.name}</h1>
+						{author.data.bio && <p class="author-bio">{author.data.bio}</p>}
+						<div class="author-links">
+							{author.data.website && (
+								<a href={author.data.website} target="_blank" rel="noopener noreferrer">Website</a>
+							)}
+							{author.data.mastodon && (
+								<a href={`https://fosstodon.org/${author.data.mastodon}`} target="_blank" rel="noopener noreferrer">Mastodon</a>
+							)}
+							{author.data.bluesky && (
+								<a href={`https://bsky.app/profile/${author.data.bluesky}`} target="_blank" rel="noopener noreferrer">Bluesky</a>
+							)}
+							{author.data.linkedin && (
+								<a href={`https://linkedin.com/in/${author.data.linkedin}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+							)}
+							{author.data.github && (
+								<a href={`https://github.com/${author.data.github}`} target="_blank" rel="noopener noreferrer">GitHub</a>
+							)}
+						</div>
+					</div>
+				</div>
+
+				<div class="author-content">
+					<Content />
+				</div>
+
+				{authorPosts.length > 0 && (
+					<div class="author-posts">
+						<h2>Blog Posts by {author.data.name}</h2>
+						<ul class="post-list">
+							{authorPosts.map((post) => (
+								<li>
+									<a href={`${import.meta.env.BASE_URL}/blog/${post.id}/`}>
+										<div class="post-info">
+											<h3>{post.data.title}</h3>
+											<p>{post.data.description}</p>
+											<div class="post-meta">
+												<FormattedDate date={post.data.pubDate} />
+												<span class="track-badge track-{post.data.track}">{post.data.track}</span>
+											</div>
+										</div>
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+			</div>
+		</main>
+		<Footer />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.author-profile {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+			}
+			.author-header {
+				display: flex;
+				gap: 2rem;
+				margin-bottom: 2rem;
+				align-items: flex-start;
+			}
+			.author-avatar-large {
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+			.author-info h1 {
+				margin: 0 0 1rem 0;
+				font-size: 2.5rem;
+			}
+			.author-bio {
+				font-size: 1.2rem;
+				color: rgb(var(--gray-dark));
+				margin-bottom: 1rem;
+				line-height: 1.6;
+			}
+			.author-links {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+			.author-links a {
+				padding: 0.5rem 1rem;
+				background: rgb(var(--accent));
+				color: white;
+				text-decoration: none;
+				border-radius: 6px;
+				font-size: 0.9rem;
+				transition: background-color 0.2s ease;
+			}
+			.author-links a:hover {
+				background: rgb(var(--accent-dark));
+			}
+			.author-content {
+				margin-bottom: 3rem;
+				line-height: 1.7;
+			}
+			.author-posts h2 {
+				border-bottom: 2px solid rgb(var(--gray-light));
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
+			}
+			.post-list {
+				list-style: none;
+				padding: 0;
+			}
+			.post-list li {
+				margin-bottom: 1.5rem;
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				transition: box-shadow 0.2s ease;
+			}
+			.post-list li:hover {
+				box-shadow: var(--box-shadow);
+			}
+			.post-list a {
+				display: block;
+				padding: 1.5rem;
+				text-decoration: none;
+				color: inherit;
+			}
+			.post-info h3 {
+				margin: 0 0 0.5rem 0;
+				color: rgb(var(--black));
+			}
+			.post-info p {
+				margin: 0 0 1rem 0;
+				color: rgb(var(--gray-dark));
+				line-height: 1.5;
+			}
+			.post-meta {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				font-size: 0.9rem;
+				color: rgb(var(--gray));
+			}
+			.track-badge {
+				padding: 0.25rem 0.75rem;
+				border-radius: 12px;
+				font-size: 0.8rem;
+				font-weight: 500;
+				text-transform: capitalize;
+			}
+			.track-research {
+				background: #e0f2fe;
+				color: #0277bd;
+			}
+			.track-engineering {
+				background: #f3e5f5;
+				color: #7b1fa2;
+			}
+			.track-community {
+				background: #e8f5e8;
+				color: #2e7d32;
+			}
+
+			@media (max-width: 640px) {
+				.author-header {
+					flex-direction: column;
+					text-align: center;
+				}
+				.author-avatar-large {
+					align-self: center;
+				}
+			}
+		</style>
+	</body>
+</html>

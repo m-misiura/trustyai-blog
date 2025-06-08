@@ -13,7 +13,25 @@ const blog = defineCollection({
 		updatedDate: z.coerce.date().optional(),
 		heroImage: z.string().optional(),
 		track: z.enum(['research', 'engineering', 'community']),
+		authors: z.array(z.string()).optional(),
 	}),
 });
 
-export const collections = { blog };
+const authors = defineCollection({
+	// Load Markdown and MDX files in the `src/content/authors/` directory.
+	loader: glob({ base: './src/content/authors', pattern: '**/*.{md,mdx}' }),
+	// Type-check frontmatter using a schema
+	schema: z.object({
+		name: z.string(),
+		bio: z.string().optional(),
+		avatar: z.string().optional(),
+		email: z.string().optional(),
+		mastodon: z.string().optional(),
+		bluesky: z.string().optional(),
+		linkedin: z.string().optional(),
+		github: z.string().optional(),
+		website: z.string().optional(),
+	}),
+});
+
+export const collections = { blog, authors };
