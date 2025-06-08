@@ -12,7 +12,7 @@ const blog = defineCollection({
 		pubDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
 		heroImage: z.string().optional(),
-		track: z.enum(['research', 'engineering']),
+		track: z.enum(['research', 'engineering', 'community']),
 	}),
 });
 

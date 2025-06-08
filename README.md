@@ -1,6 +1,6 @@
 # TrustyAI Blog
 
-A blog for TrustyAI covering research insights and engineering best practices for trustworthy AI systems.
+A blog for TrustyAI covering research insights, engineering best practices, and community discussions for trustworthy AI systems.
 
 ## Development
 
@@ -44,6 +44,17 @@ title: 'Post Title'
 description: 'Post description'
 pubDate: 'Dec 01 2024'
 heroImage: '/blog-placeholder-1.jpg'
-track: 'research' # or 'engineering'
+track: 'research' # or 'engineering' or 'community'
 ---
 ```
+
+### Track Categories
+
+- **Research** (`track: 'research'`): Theoretical foundations and novel approaches to trustworthy AI
+- **Engineering** (`track: 'engineering'`): Practical guides and best practices for building trustworthy AI systems  
+- **Community** (`track: 'community'`): Insights, discussions, and contributions from the TrustyAI community
+
+Posts should be placed in the appropriate subdirectory:
+- Research posts: `src/content/blog/research/`
+- Engineering posts: `src/content/blog/engineering/`
+- Community posts: `src/content/blog/community/`
