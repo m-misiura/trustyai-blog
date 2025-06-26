@@ -4,13 +4,13 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { visit } from 'unist-util-visit';
 
-// Always use the full site URL for absolute links
+// Site configuration for https://blog.trustyai.org
 const siteUrl = 'https://blog.trustyai.org';
-const baseUrl = siteUrl;
+const basePath = ''; // Empty for root path deployment
 
 console.log('Build environment:', {
 	site: siteUrl,
-	baseUrl: baseUrl,
+	base: basePath || '(root path)',
 	NODE_ENV: process.env.NODE_ENV
 });
 
@@ -20,8 +20,8 @@ function remarkBaseUrl() {
 	return (tree) => {
 		visit(tree, 'image', (node) => {
 			if (node.url && node.url.startsWith('/') && !node.url.startsWith(siteUrl)) {
-				console.log(`Transforming image URL: ${node.url} -> ${siteUrl}${node.url}`);
-				node.url = `${siteUrl}${node.url}`;
+				console.log(`Transforming image URL: ${node.url} -> ${basePath}${node.url}`);
+				node.url = `${basePath}${node.url}`;
 			}
 		});
 		// Also handle HTML img tags in MDX
@@ -31,7 +31,7 @@ function remarkBaseUrl() {
 					/src="(\/[^"]*?)"/g,
 					(match, src) => {
 						if (!src.startsWith(siteUrl)) {
-							const newSrc = `${siteUrl}${src}`;
+							const newSrc = `${basePath}${src}`;
 							console.log(`Transforming HTML img src: ${src} -> ${newSrc}`);
 							return `src="${newSrc}"`;
 						}
@@ -46,7 +46,7 @@ function remarkBaseUrl() {
 // https://astro.build/config
 export default defineConfig({
 	site: siteUrl,
-	base: baseUrl,
+	base: basePath,
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		remarkPlugins: [remarkBaseUrl],
