@@ -4,14 +4,12 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { visit } from 'unist-util-visit';
 
-// Determine if we're building for GitHub Pages (with subdirectory) or custom domain
-const isGitHubPages = process.env.GITHUB_PAGES === 'true';
-const baseUrl = isGitHubPages ? '/trustyai-blog' : '';
+// Always deploy to https://blog.trustyai.org with root path
+const baseUrl = '';
 
 console.log('Build environment:', {
-	GITHUB_PAGES: process.env.GITHUB_PAGES,
-	isGitHubPages,
-	baseUrl,
+	site: 'https://blog.trustyai.org',
+	baseUrl: baseUrl || '(root path)',
 	NODE_ENV: process.env.NODE_ENV
 });
 
