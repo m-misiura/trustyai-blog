@@ -5,28 +5,11 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
+import { getImageUrl, getPostUrl } from '../utils/urls';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
-// Helper function to fix hero image URLs
-const getImageUrl = (heroImage) => {
-	if (!heroImage) return '';
-	return heroImage.startsWith('/') ? `${import.meta.env.BASE_URL}/${heroImage.slice(1)}` : heroImage;
-};
-
-// Helper function to get the correct post URL
-const getPostUrl = (post) => {
-	if (post.data.track === 'research') {
-		return `${import.meta.env.BASE_URL}/research/${post.id.replace('research/', '')}`;
-	} else if (post.data.track === 'engineering') {
-		return `${import.meta.env.BASE_URL}/engineering/${post.id.replace('engineering/', '')}`;
-	} else {
-		// For posts not in subdirectories
-		return `${import.meta.env.BASE_URL}/blog/${post.id}`;
-	}
-};
 ---
 
 <!doctype html>

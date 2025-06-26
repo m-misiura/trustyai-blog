@@ -11,18 +11,17 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const baseUrl = import.meta.env.BASE_URL;
-const fontRegularUrl = `${baseUrl}/fonts/atkinson-regular.woff`;
-const fontBoldUrl = `${baseUrl}/fonts/atkinson-bold.woff`;
+const fontRegularUrl = 'https://blog.trustyai.org/fonts/atkinson-regular.woff';
+const fontBoldUrl = 'https://blog.trustyai.org/fonts/atkinson-bold.woff';
 
-const { title, description, image = `${baseUrl}/blog-placeholder-1.jpg` } = Astro.props;
+const { title, description, image = 'https://blog.trustyai.org/blog-placeholder-1.jpg' } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
-<link rel="sitemap" href={`${baseUrl}/sitemap-index.xml`} />
+<link rel="icon" type="image/svg+xml" href="https://blog.trustyai.org/favicon.svg" />
+<link rel="sitemap" href="https://blog.trustyai.org/sitemap-index.xml" />
 <link
 	rel="alternate"
 	type="application/rss+xml"
