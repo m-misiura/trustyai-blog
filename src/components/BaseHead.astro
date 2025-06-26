@@ -13,6 +13,8 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const fontRegularUrl = 'https://blog.trustyai.org/fonts/atkinson-regular.woff';
 const fontBoldUrl = 'https://blog.trustyai.org/fonts/atkinson-bold.woff';
+const firaCodeRegularUrl = 'https://blog.trustyai.org/fonts/FiraCode-Regular.ttf';
+const firaCodeBoldUrl = 'https://blog.trustyai.org/fonts/FiraCode-Bold.ttf';
 
 const { title, description, image = 'https://blog.trustyai.org/blog-placeholder-1.jpg' } = Astro.props;
 ---
@@ -33,6 +35,8 @@ const { title, description, image = 'https://blog.trustyai.org/blog-placeholder-
 <!-- Font preloads -->
 <link rel="preload" href={fontRegularUrl} as="font" type="font/woff" crossorigin />
 <link rel="preload" href={fontBoldUrl} as="font" type="font/woff" crossorigin />
+<link rel="preload" href={firaCodeRegularUrl} as="font" type="font/ttf" crossorigin />
+<link rel="preload" href={firaCodeBoldUrl} as="font" type="font/ttf" crossorigin />
 
 <!-- Font definitions -->
 <style set:html={`
@@ -46,6 +50,20 @@ const { title, description, image = 'https://blog.trustyai.org/blog-placeholder-
 	@font-face {
 		font-family: 'Atkinson';
 		src: url('${fontBoldUrl}') format('woff');
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Fira Code';
+		src: url('${firaCodeRegularUrl}') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	@font-face {
+		font-family: 'Fira Code';
+		src: url('${firaCodeBoldUrl}') format('truetype');
 		font-weight: bold;
 		font-style: normal;
 		font-display: swap;
