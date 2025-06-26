@@ -31,13 +31,13 @@ jobs:
 
       - name: Debug environment
         run: |
-          echo "GITHUB_PAGES environment variable: $GITHUB_PAGES"
-          echo "Building with base URL for GitHub Pages"
+          echo "Custom domain detected (CNAME file present)"
+          echo "Building for root path deployment"
           
       - name: Build site
         run: npm run build
-        env:
-          GITHUB_PAGES: true
+        # Note: Not setting GITHUB_PAGES=true because we're using a custom domain
+        # The presence of CNAME file means GitHub Pages serves from root path
 
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
