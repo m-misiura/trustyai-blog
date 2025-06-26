@@ -8,17 +8,21 @@ import { visit } from 'unist-util-visit';
 function remarkBaseUrl() {
 	// @ts-ignore
 	return (tree) => {
+		const baseUrl = process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES 
+			? '/trustyai-blog' 
+			: '';
+			
 		visit(tree, 'image', (node) => {
 			if (node.url && node.url.startsWith('/') && !node.url.startsWith('/trustyai-blog/')) {
-				console.log(`Transforming image URL: ${node.url} -> /trustyai-blog${node.url}`);
-				node.url = `/trustyai-blog${node.url}`;
+				console.log(`Transforming image URL: ${node.url} -> ${baseUrl}${node.url}`);
+				node.url = `${baseUrl}${node.url}`;
 			}
 		});
 		// Also handle HTML img tags in MDX
 		visit(tree, 'html', (node) => {
 			if (node.value && node.value.includes('<img') && node.value.includes('src="/') && !node.value.includes('src="/trustyai-blog/')) {
 				console.log(`Transforming HTML img tag: ${node.value}`);
-				node.value = node.value.replace(/src="\/([^"]+)"/g, 'src="/trustyai-blog/$1"');
+				node.value = node.value.replace(/src="\/([^"]+)"/g, `src="${baseUrl}/$1"`);
 			}
 		});
 	};
@@ -26,8 +30,8 @@ function remarkBaseUrl() {
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://trustyai-explainability.github.io',
-	base: '/trustyai-blog',
+	site: 'https://blog.trustyai.org',
+	base: process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES ? '/trustyai-blog' : '/',
 	integrations: [
 		mdx({
 			remarkPlugins: [remarkBaseUrl],
