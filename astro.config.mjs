@@ -4,14 +4,14 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { visit } from 'unist-util-visit';
 
+// Determine if we're building for GitHub Pages (with subdirectory) or custom domain
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const baseUrl = isGitHubPages ? '/trustyai-blog' : '';
+
 // Custom remark plugin to handle base URL for images in markdown content
 function remarkBaseUrl() {
 	// @ts-ignore
 	return (tree) => {
-		const baseUrl = process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES 
-			? '/trustyai-blog' 
-			: '';
-			
 		visit(tree, 'image', (node) => {
 			if (node.url && node.url.startsWith('/') && !node.url.startsWith('/trustyai-blog/')) {
 				console.log(`Transforming image URL: ${node.url} -> ${baseUrl}${node.url}`);
@@ -31,7 +31,7 @@ function remarkBaseUrl() {
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://blog.trustyai.org',
-	base: process.env.NODE_ENV === 'production' && process.env.GITHUB_PAGES ? '/trustyai-blog' : '/',
+	base: baseUrl,
 	integrations: [
 		mdx({
 			remarkPlugins: [remarkBaseUrl],
