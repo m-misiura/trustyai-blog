@@ -37,7 +37,7 @@ const authorPosts = allPosts.filter(post =>
 				<div class="author-header">
 					{author.data.avatar && (
 						<img
-							src={author.data.avatar.startsWith('/') ? `${import.meta.env.BASE_URL}/${author.data.avatar.slice(1)}` : author.data.avatar}
+							src={author.data.avatar.startsWith('/') ? `https://blog.trustyai.org${author.data.avatar}` : author.data.avatar}
 							alt={author.data.name}
 							class="author-avatar-large"
 						/>
@@ -75,7 +75,7 @@ const authorPosts = allPosts.filter(post =>
 						<ul class="post-list">
 							{authorPosts.map((post) => (
 								<li>
-									<a href={`${import.meta.env.BASE_URL}/blog/${post.id}/`}>
+									<a href={post.data.track === 'research' ? `https://blog.trustyai.org/research/${post.id.replace('research/', '')}` : post.data.track === 'engineering' ? `https://blog.trustyai.org/engineering/${post.id.replace('engineering/', '')}` : post.data.track === 'community' ? `https://blog.trustyai.org/community/${post.id.replace('community/', '')}` : `https://blog.trustyai.org/blog/${post.id}/`}>
 										<div class="post-info">
 											<h3>{post.data.title}</h3>
 											<p>{post.data.description}</p>

@@ -22,7 +22,7 @@ const sizeClasses = {
 		<a href={href} class="author-link">
 			{avatar && (
 				<img
-					src={avatar.startsWith('/') ? `${import.meta.env.BASE_URL}/${avatar.slice(1)}` : avatar}
+					src={avatar.startsWith('/') ? `https://blog.trustyai.org${avatar}` : avatar}
 					alt={name}
 					class="author-avatar"
 				/>
@@ -36,7 +36,7 @@ const sizeClasses = {
 		<>
 			{avatar && (
 				<img
-					src={avatar.startsWith('/') ? `${import.meta.env.BASE_URL}/${avatar.slice(1)}` : avatar}
+					src={avatar.startsWith('/') ? `https://blog.trustyai.org${avatar}` : avatar}
 					alt={name}
 					class="author-avatar"
 				/>
