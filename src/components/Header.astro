@@ -1,19 +1,33 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+
+// Helper function to create proper URLs
+const createUrl = (path) => {
+	const base = import.meta.env.BASE_URL || '';
+	const site = import.meta.env.SITE || 'https://blog.trustyai.org';
+	
+	// If base is empty and we're on the live site, use absolute URLs
+	if (!base && site.includes('blog.trustyai.org')) {
+		return `${site}${path}`;
+	}
+	
+	// Otherwise use base + path (handles both empty base and subdirectory base)
+	return `${base}${path}`;
+};
 ---
 
 <header>
 	<nav>
 		<div class="site-branding">
-			<img src={`${import.meta.env.BASE_URL}/trustyai-logo.svg`} alt="TrustyAI Logo" class="logo" />
-			<h2><a href={`${import.meta.env.BASE_URL}/`}>{SITE_TITLE}</a></h2>
+			<img src={createUrl('/trustyai-logo.svg')} alt="TrustyAI Logo" class="logo" />
+			<h2><a href={createUrl('/')}>{SITE_TITLE}</a></h2>
 		</div>
 		<div class="internal-links">
-			<HeaderLink href={`${import.meta.env.BASE_URL}/research`}>Research</HeaderLink>
-			<HeaderLink href={`${import.meta.env.BASE_URL}/engineering`}>Engineering</HeaderLink>
-			<HeaderLink href={`${import.meta.env.BASE_URL}/community`}>Community</HeaderLink>
-			<HeaderLink href={`${import.meta.env.BASE_URL}/authors`}>Authors</HeaderLink>
+			<HeaderLink href={createUrl('/research')}>Research</HeaderLink>
+			<HeaderLink href={createUrl('/engineering')}>Engineering</HeaderLink>
+			<HeaderLink href={createUrl('/community')}>Community</HeaderLink>
+			<HeaderLink href={createUrl('/authors')}>Authors</HeaderLink>
 			<HeaderLink href="https://trustyai.org/docs" target="_blank">Documentation</HeaderLink>
 		</div>
 		<div class="social-links">
