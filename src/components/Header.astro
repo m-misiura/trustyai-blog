@@ -8,8 +8,8 @@ const baseUrl = getBaseUrl();
 <header>
 	<nav>
 		<div class="site-branding">
-			<img src="https://blog.trustyai.org/trustyai-logo.svg" alt="TrustyAI Logo" class="logo" />
-			<h2><a href="https://blog.trustyai.org/">{SITE_TITLE}</a></h2>
+			<img src={`${import.meta.env.BASE_URL}/trustyai-logo.svg`} alt="TrustyAI Logo" class="logo" />
+			<h2><a href={`${import.meta.env.BASE_URL}`}>{SITE_TITLE}</a></h2>
 		</div>
 		<div class="internal-links">
 			<HeaderLink href={`${baseUrl}/research`}>Research</HeaderLink>
