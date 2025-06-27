@@ -12,6 +12,7 @@ const posts = (await getCollection('blog')).sort(
 
 const researchPosts = posts.filter(post => post.data.track === 'research');
 const engineeringPosts = posts.filter(post => post.data.track === 'engineering');
+const communityPosts = posts.filter(post => post.data.track === 'community');
 ---
 
 <!doctype html>
@@ -125,6 +126,25 @@ const engineeringPosts = posts.filter(post => post.data.track === 'engineering')
 				<ul>
 					{
 						engineeringPosts.map((post) => (
+							<li>
+								<a href={post.id}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+			
+			<section class="track-section">
+				<h2 class="track-title">Community</h2>
+				<ul>
+					{
+						communityPosts.map((post) => (
 							<li>
 								<a href={post.id}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
