@@ -28,3 +28,8 @@ export function getAssetUrl(path: string): string {
 export function getBlogPostUrl(postId: string): string {
 	return `${SITE_URL}/blog/${postId}/`;
 } 
+
+// when using a relative base, import.meta.env.BASE_URL will be '/./'
+export const getBaseUrl = () => {
+	return import.meta.env.BASE_URL === '/./' ? '' : import.meta.env.BASE_URL;
+}; 
