@@ -1,6 +1,8 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+import { getBaseUrl } from '../utils/urls';
+const baseUrl = getBaseUrl();
 ---
 
 <header>
@@ -10,11 +12,11 @@ import { SITE_TITLE } from '../consts';
 			<h2><a href="https://blog.trustyai.org/">{SITE_TITLE}</a></h2>
 		</div>
 		<div class="internal-links">
-			<HeaderLink href="https://blog.trustyai.org/research">Research</HeaderLink>
-			<HeaderLink href="https://blog.trustyai.org/engineering">Engineering</HeaderLink>
-			<HeaderLink href="https://blog.trustyai.org/community">Community</HeaderLink>
-			<HeaderLink href="https://blog.trustyai.org/authors">Authors</HeaderLink>
-			<HeaderLink href="https://trustyai.org/docs/main/main" target="_blank">Documentation</HeaderLink>
+			<HeaderLink href={`${baseUrl}/research`}>Research</HeaderLink>
+			<HeaderLink href={`${baseUrl}/engineering`}>Engineering</HeaderLink>
+			<HeaderLink href={`${baseUrl}/community`}>Community</HeaderLink>
+			<HeaderLink href={`${baseUrl}/authors`}>Authors</HeaderLink>
+			<HeaderLink href="https://trustyai-explainability.github.io/trustyai-site/main/main.html" target="_blank">Documentation</HeaderLink>
 		</div>
 		<div class="social-links">
 			<a href="https://fosstodon.org/@trustyai" target="_blank">
