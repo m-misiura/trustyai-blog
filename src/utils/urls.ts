@@ -31,5 +31,8 @@ export function getBlogPostUrl(postId: string): string {
 
 // when using a relative base, import.meta.env.BASE_URL will be '/./'
 export const getBaseUrl = () => {
-	return import.meta.env.BASE_URL === '/./' ? '' : import.meta.env.BASE_URL;
+	if (import.meta.env.BASE_URL === '/./' || import.meta.env.BASE_URL === '/') {
+		return '';
+	}
+	return import.meta.env.BASE_URL;
 }; 
