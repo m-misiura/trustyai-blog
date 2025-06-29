@@ -3,9 +3,10 @@ import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { getAuthorUrl, getAssetUrl } from '../../utils/urls';
+import { getBaseUrl } from '../../utils/urls';
 
 const authors = await getCollection('authors');
+const baseUrl = getBaseUrl();
 ---
 
 <html lang="en">
@@ -22,10 +23,10 @@ const authors = await getCollection('authors');
 					{
 						authors.map((author) => (
 							<li class="author-card">
-								<a href={getAuthorUrl(author.id)}>
+								<a href={`${baseUrl}/authors/${author.id}/`}>
 									{author.data.avatar && (
 										<img
-											src={author.data.avatar.startsWith('/') ? getAssetUrl(author.data.avatar) : author.data.avatar}
+											src={author.data.avatar}
 											alt={author.data.name}
 											class="author-avatar"
 										/>

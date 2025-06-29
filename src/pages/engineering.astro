@@ -9,17 +9,6 @@ import FormattedDate from '../components/FormattedDate.astro';
 const posts = (await getCollection('blog'))
 	.filter(post => post.data.track === 'engineering')
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// Helper function to fix hero image URLs
-const getImageUrl = (heroImage) => {
-	if (!heroImage) return '';
-	return heroImage.startsWith('/') ? `https://blog.trustyai.org${heroImage}` : heroImage;
-};
-
-// Helper function to get the correct post URL for engineering posts
-const getPostUrl = (post) => {
-	return `https://blog.trustyai.org/engineering/${post.id.replace('engineering/', '')}`;
-};
 ---
 
 <!doctype html>
@@ -124,8 +113,8 @@ const getPostUrl = (post) => {
 					{
 						posts.map((post) => (
 							<li>
-								<a href={getPostUrl(post)}>
-									<img width={720} height={360} src={getImageUrl(post.data.heroImage)} alt="" />
+								<a href={post.id}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />

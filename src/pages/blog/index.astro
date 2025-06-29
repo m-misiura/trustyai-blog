@@ -12,24 +12,7 @@ const posts = (await getCollection('blog')).sort(
 
 const researchPosts = posts.filter(post => post.data.track === 'research');
 const engineeringPosts = posts.filter(post => post.data.track === 'engineering');
-
-// Helper function to fix hero image URLs
-const getImageUrl = (heroImage) => {
-	if (!heroImage) return '';
-	return heroImage.startsWith('/') ? `https://blog.trustyai.org${heroImage}` : heroImage;
-};
-
-// Helper function to get the correct post URL
-const getPostUrl = (post) => {
-	if (post.data.track === 'research') {
-		return `https://blog.trustyai.org/research/${post.id.replace('research/', '')}`;
-	} else if (post.data.track === 'engineering') {
-		return `https://blog.trustyai.org/engineering/${post.id.replace('engineering/', '')}`;
-	} else {
-		// For posts not in subdirectories
-		return `https://blog.trustyai.org/blog/${post.id}`;
-	}
-};
+const communityPosts = posts.filter(post => post.data.track === 'community');
 ---
 
 <!doctype html>
@@ -125,8 +108,8 @@ const getPostUrl = (post) => {
 					{
 						researchPosts.map((post) => (
 							<li>
-								<a href={getPostUrl(post)}>
-									<img width={720} height={360} src={getImageUrl(post.data.heroImage)} alt="" />
+								<a href={post.id}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />
@@ -144,8 +127,27 @@ const getPostUrl = (post) => {
 					{
 						engineeringPosts.map((post) => (
 							<li>
-								<a href={getPostUrl(post)}>
-									<img width={720} height={360} src={getImageUrl(post.data.heroImage)} alt="" />
+								<a href={post.id}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
+									<h4 class="title">{post.data.title}</h4>
+									<p class="date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+			
+			<section class="track-section">
+				<h2 class="track-title">Community</h2>
+				<ul>
+					{
+						communityPosts.map((post) => (
+							<li>
+								<a href={post.id}>
+									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />
