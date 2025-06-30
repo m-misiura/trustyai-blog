@@ -2,7 +2,7 @@
 name: 'Diego'
 bio: 'Principal Machine Learning Engineer at Red Hat'
 avatar: '/authors/diego.jpg'
-linkedin: 'your-linkedin-handle'
+linkedin: 'diegomaniloff'
 github: 'dmaniloff'
 ---
 
