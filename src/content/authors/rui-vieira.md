@@ -1,5 +1,6 @@
 ---
 name: 'Rui Vieira'
+bio: 'Principal Software Engineer at Red Hat'
 avatar: '/authors/rui-vieira.jpg'
 email: 'rui@redhat.com'
 fosstodon: 'rui'
