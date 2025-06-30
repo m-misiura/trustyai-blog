@@ -7,6 +7,7 @@ import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { getBaseUrl } from '../../utils/urls';
 const baseUrl = getBaseUrl();
+import SocialLinks from '../../components/SocialLinks.astro';
 
 export async function getStaticPaths() {
 	const authors = await getCollection('authors');
@@ -47,23 +48,7 @@ const authorPosts = allPosts.filter(post =>
 					<div class="author-info">
 						<h1>{author.data.name}</h1>
 						{author.data.bio && <p class="author-bio">{author.data.bio}</p>}
-						<div class="author-links">
-							{author.data.website && (
-								<a href={author.data.website} target="_blank" rel="noopener noreferrer">Website</a>
-							)}
-							{author.data.mastodon && (
-								<a href={`https://fosstodon.org/${author.data.mastodon}`} target="_blank" rel="noopener noreferrer">Mastodon</a>
-							)}
-							{author.data.bluesky && (
-								<a href={`https://bsky.app/profile/${author.data.bluesky}`} target="_blank" rel="noopener noreferrer">Bluesky</a>
-							)}
-							{author.data.linkedin && (
-								<a href={`https://linkedin.com/in/${author.data.linkedin}`} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-							)}
-							{author.data.github && (
-								<a href={`https://github.com/${author.data.github}`} target="_blank" rel="noopener noreferrer">GitHub</a>
-							)}
-						</div>
+						<SocialLinks author={author} size="medium" />
 					</div>
 				</div>
 
@@ -129,23 +114,6 @@ const authorPosts = allPosts.filter(post =>
 				color: rgb(var(--gray-dark));
 				margin-bottom: 1rem;
 				line-height: 1.6;
-			}
-			.author-links {
-				display: flex;
-				gap: 1rem;
-				flex-wrap: wrap;
-			}
-			.author-links a {
-				padding: 0.5rem 1rem;
-				background: rgb(var(--accent));
-				color: white;
-				text-decoration: none;
-				border-radius: 6px;
-				font-size: 0.9rem;
-				transition: background-color 0.2s ease;
-			}
-			.author-links a:hover {
-				background: rgb(var(--accent-dark));
 			}
 			.author-content {
 				margin-bottom: 3rem;

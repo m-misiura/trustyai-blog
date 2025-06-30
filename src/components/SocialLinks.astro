@@ -1,0 +1,191 @@
+---
+export interface Props {
+	author: {
+		data: {
+			name: string;
+			github?: string;
+			fosstodon?: string;
+			bluesky?: string;
+			linkedin?: string;
+			website?: string;
+		};
+	};
+	size?: 'small' | 'medium';
+}
+
+const { author, size = 'medium' } = Astro.props;
+
+const sizeClasses = {
+	small: 'social-links-small',
+	medium: 'social-links-medium'
+};
+---
+
+<div class={`social-links ${sizeClasses[size]}`}>
+	{author.data.github && (
+		<a 
+			href={`https://github.com/${author.data.github}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="github-link"
+			title={`View ${author.data.name}'s GitHub profile`}
+		>
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+			</svg>
+			{author.data.github}
+		</a>
+	)}
+	{author.data.fosstodon && (
+		<a 
+			href={`https://fosstodon.org/@${author.data.fosstodon}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="mastodon-link"
+			title={`View ${author.data.name}'s Fosstodon profile`}
+		>
+			<svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
+				<path
+					fill="currentColor"
+					d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339 0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027 0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614 0 0 1-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804 0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727 0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856 0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74 0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"
+				></path>
+			</svg>
+			{author.data.fosstodon}
+		</a>
+	)}
+	{author.data.bluesky && (
+		<a 
+			href={`https://bsky.app/profile/${author.data.bluesky}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="bluesky-link"
+			title={`View ${author.data.name}'s Bluesky profile`}
+		>
+			<svg width="20" height="20" viewBox="0 0 64 64" fill="currentColor">
+				<path d="M13.873 3.805C21.21 9.332 29.103 20.537 32 26.55v15.882c0-.338-.13.044-.41.867-1.512 4.456-7.418 21.847-20.923 7.944-7.111-7.32-3.819-14.64 9.125-16.85-7.405 1.264-15.73-.825-18.014-9.015C1.12 23.022 0 8.51 0 6.55 0-3.268 8.579-.182 13.873 3.805ZM50.127 3.805C42.79 9.332 34.897 20.537 32 26.55v15.882c0-.338.13.044.41.867 1.512 4.456 7.418 21.847 20.923 7.944 7.111-7.32 3.819-14.64-9.125-16.85 7.405 1.264 15.73-.825 18.014-9.015C62.88 23.022 64 8.51 64 6.55c0-9.818-8.578-6.732-13.873-2.745Z"/>
+			</svg>
+			{author.data.bluesky}
+		</a>
+	)}
+	{author.data.linkedin && (
+		<a 
+			href={`https://linkedin.com/in/${author.data.linkedin}`}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="linkedin-link"
+			title={`View ${author.data.name}'s LinkedIn profile`}
+		>
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+			</svg>
+			{author.data.linkedin}
+		</a>
+	)}
+	{author.data.website && (
+		<a 
+			href={author.data.website}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="website-link"
+			title={`Visit ${author.data.name}'s website`}
+		>
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+				<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+			</svg>
+			{author.data.website.split('//')[1]}
+		</a>
+	)}
+</div>
+
+<style>
+	.social-links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+	
+	.social-links-medium {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		margin-top: 0;
+	}
+	
+	.github-link,
+	.linkedin-link,
+	.website-link,
+	.mastodon-link,
+	.bluesky-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		border-radius: 6px;
+		text-decoration: none;
+		font-size: 0.9rem;
+		transition: background-color 0.2s ease;
+		align-self: flex-start;
+	}
+	
+	.social-links-medium .github-link,
+	.social-links-medium .linkedin-link,
+	.social-links-medium .website-link,
+	.social-links-medium .mastodon-link,
+	.social-links-medium .bluesky-link {
+		align-self: auto;
+	}
+	
+	.github-link {
+		background-color: rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+	}
+	.github-link:hover {
+		background-color: rgb(var(--gray));
+		color: rgb(var(--black));
+	}
+	.mastodon-link {
+		background-color: #6364ff;
+		color: white;
+	}
+	.mastodon-link:hover {
+		background-color: #4f50e6;
+	}
+	.bluesky-link {
+		background-color: #0085ff;
+		color: white;
+	}
+	.bluesky-link:hover {
+		background-color: #0066cc;
+	}
+	.linkedin-link {
+		background-color: #0077b5;
+		color: white;
+	}
+	.linkedin-link:hover {
+		background-color: #005885;
+	}
+	.website-link {
+		background-color: #d9ecc7;
+		color: #0c1e21;
+	}
+	.website-link:hover {
+		background-color: #c5d8b3;
+	}
+	
+	/* Small size adjustments */
+	.social-links-small .github-link,
+	.social-links-small .linkedin-link,
+	.social-links-small .website-link,
+	.social-links-small .mastodon-link,
+	.social-links-small .bluesky-link {
+		padding: 0.4rem 0.8rem;
+		font-size: 0.8rem;
+	}
+	
+	.social-links-small svg {
+		width: 16px;
+		height: 16px;
+	}
+</style> 
