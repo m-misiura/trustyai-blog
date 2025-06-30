@@ -2,7 +2,7 @@
 name: 'Rui Vieira'
 avatar: '/authors/rui-vieira.jpg'
 email: 'rui@redhat.com'
-fosstodon: 'ruivieira'
+fosstodon: 'rui'
 linkedin: 'ruimvieira'
 github: 'ruivieira'
 ---
