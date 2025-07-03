@@ -1,5 +1,5 @@
 ---
-name: 'Evaline'
+name: 'Evaline Ju'
 bio: 'Senior Software Engineer at IBM Research'
 avatar: '/authors/evaline.JPG'
 linkedin: 'evalineju'
