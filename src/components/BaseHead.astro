@@ -3,6 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import { SITE_TITLE } from '../consts';
+import { getBaseUrl } from '../utils/urls';
 
 interface Props {
 	title: string;
@@ -10,20 +11,20 @@ interface Props {
 	image?: string;
 }
 
+const baseUrl = getBaseUrl();
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fontRegularUrl = 'https://blog.trustyai.org/fonts/atkinson-regular.woff';
-const fontBoldUrl = 'https://blog.trustyai.org/fonts/atkinson-bold.woff';
-const firaCodeRegularUrl = 'https://blog.trustyai.org/fonts/FiraCode-Regular.ttf';
-const firaCodeBoldUrl = 'https://blog.trustyai.org/fonts/FiraCode-Bold.ttf';
-
-const { title, description, image = 'https://blog.trustyai.org/blog-placeholder-1.jpg' } = Astro.props;
+const fontRegularUrl = `${baseUrl}/fonts/atkinson-regular.woff`;
+const fontBoldUrl = `${baseUrl}/fonts/atkinson-bold.woff`;
+const firaCodeRegularUrl = `${baseUrl}/fonts/FiraCode-Regular.ttf`;
+const firaCodeBoldUrl = `${baseUrl}/fonts/FiraCode-Bold.ttf`;
+const { title, description, image = `${baseUrl}/blog-placeholder-1.jpg` } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="https://blog.trustyai.org/favicon.ico" />
-<link rel="sitemap" href="https://blog.trustyai.org/sitemap-index.xml" />
+<link rel="icon" type="image/x-icon" href={`${baseUrl}/favicon.ico`} />
+<link rel="sitemap" href={`${baseUrl}/sitemap-index.xml`} />
 <link
 	rel="alternate"
 	type="application/rss+xml"
