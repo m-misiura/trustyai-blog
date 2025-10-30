@@ -169,11 +169,15 @@ The following tables show model performance ranked by F1 Score for each probe. E
 
 Model abbreviations used in tables below:
 
-- **deberta-v3-base-prompt-injection-v2** → protectai/deberta-v3-base-prompt-injection-v2
-- **Jailbreak-Detector-Large** → madhurjindal/Jailbreak-Detector-Large
-- **jailbreak-classifier** → jackhhao/jailbreak-classifier
-- **prompt-injection-defender-base-v1** → testsavantai/prompt-injection-defender-base-v1
-- **lora_jailbreak_classifier_modernbert-base_model** → llm-semantic-router/lora_jailbreak_classifier_modernbert-base_model
+- **protectai/deberta** → protectai/deberta-v3-base-prompt-injection-v2
+- **madhurjindal/jailbreak** → madhurjindal/Jailbreak-Detector-Large
+- **jackhhao/jailbreak** → jackhhao/jailbreak-classifier
+- **testsavantai/prompt** → testsavantai/prompt-injection-defender-base-v1
+- **llm-semantic-router/lora** → llm-semantic-router/lora_jailbreak_classifier_modernbert-base_model
+
+### Disclaimer
+
+Note that the results presented below contain prompt samples used to evaluate model performance. Some of these prompts may be considered offensive or inappropriate. The purpose of including these prompts is purely educational, to illustrate the nature of prompt injection attacks. The inclusion of such content does not reflect the views or values of the author or the hosting platform.
 
 ### ANSI Escape Code Attacks
 
@@ -189,23 +193,23 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.903 | 100.00% | 82.35% | 42 | 51 | 0 | 9 |
-| 2 | Jailbreak-Detector-Large | 0.478 | 100.00% | 31.37% | 16 | 51 | 0 | 35 |
-| 3 | jailbreak-classifier | 0.394 | 86.67% | 25.49% | 13 | 49 | 2 | 38 |
-| 4 | prompt-injection-defender-base-v1 | 0.211 | 100.00% | 11.76% | 6 | 51 | 0 | 45 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 51 | 0 | 51 |
+| 1 | protectai/deberta | 0.903 | 100.00% | 82.35% | 42 | 51 | 0 | 9 |
+| 2 | madhurjindal/jailbreak | 0.478 | 100.00% | 31.37% | 16 | 51 | 0 | 35 |
+| 3 | jackhhao/jailbreak | 0.394 | 86.67% | 25.49% | 13 | 49 | 2 | 38 |
+| 4 | testsavantai/prompt | 0.211 | 100.00% | 11.76% | 6 | 51 | 0 | 45 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 51 | 0 | 51 |
 
 #### probes.ansiescape.AnsiRaw
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.874 | 100.00% | 77.59% | 45 | 58 | 0 | 13 |
-| 2 | prompt-injection-defender-base-v1 | 0.432 | 100.00% | 27.59% | 16 | 58 | 0 | 42 |
-| 3 | Jailbreak-Detector-Large | 0.215 | 100.00% | 12.07% | 7 | 58 | 0 | 51 |
-| 4 | jailbreak-classifier | 0.159 | 100.00% | 8.62% | 5 | 58 | 0 | 53 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 58 | 0 | 58 |
+| 1 | protectai/deberta | 0.874 | 100.00% | 77.59% | 45 | 58 | 0 | 13 |
+| 2 | testsavantai/prompt | 0.432 | 100.00% | 27.59% | 16 | 58 | 0 | 42 |
+| 3 | madhurjindal/jailbreak | 0.215 | 100.00% | 12.07% | 7 | 58 | 0 | 51 |
+| 4 | jackhhao/jailbreak | 0.159 | 100.00% | 8.62% | 5 | 58 | 0 | 53 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 58 | 0 | 58 |
 
-**Key findings:** The **deberta-v3-base-prompt-injection-v2** model showed strong performance (F1 scores of 0.903 and 0.874), successfully detecting most ANSI-based attacks with perfect precision.
+**Key findings:** The **protectai/deberta** model showed strong performance (F1 scores of 0.903 and 0.874), successfully detecting most ANSI-based attacks with perfect precision.
 
 ### Continuation Attacks
 
@@ -221,11 +225,11 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | lora_jailbreak_classifier_modernbert-base_model | 0.097 | 85.71% | 5.16% | 18 | 346 | 3 | 331 |
-| 2 | Jailbreak-Detector-Large | 0.006 | 100.00% | 0.29% | 1 | 349 | 0 | 348 |
-| 3 | prompt-injection-defender-base-v1 | 0.006 | 100.00% | 0.29% | 1 | 349 | 0 | 348 |
-| 4 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 349 | 0 | 349 |
-| 5 | jailbreak-classifier | 0.000 | 0.00% | 0.00% | 0 | 349 | 0 | 349 |
+| 1 | llm-semantic-router/lora | 0.097 | 85.71% | 5.16% | 18 | 346 | 3 | 331 |
+| 2 | madhurjindal/jailbreak | 0.006 | 100.00% | 0.29% | 1 | 349 | 0 | 348 |
+| 3 | testsavantai/prompt | 0.006 | 100.00% | 0.29% | 1 | 349 | 0 | 348 |
+| 4 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 349 | 0 | 349 |
+| 5 | jackhhao/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 349 | 0 | 349 |
 
 **Key findings:** All models performed poorly on this probe, with the highest F1 score being only 0.097. While this probe highlights a significant vulnerability area, it also appears to be more closely aligned to toxic language as opposed to an actual prompt injection attack. 
 
@@ -243,33 +247,33 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
-| 2 | jailbreak-classifier | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
-| 3 | Jailbreak-Detector-Large | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
-| 4 | prompt-injection-defender-base-v1 | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.996 | 99.22% | 100.00% | 127 | 126 | 1 | 0 |
+| 1 | protectai/deberta | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
+| 2 | jackhhao/jailbreak | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
+| 3 | madhurjindal/jailbreak | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
+| 4 | testsavantai/prompt | 1.000 | 100.00% | 100.00% | 127 | 127 | 0 | 0 |
+| 5 | llm-semantic-router/lora | 0.996 | 99.22% | 100.00% | 127 | 126 | 1 | 0 |
 
 #### probes.dan.AutoDANCached
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
-| 2 | jailbreak-classifier | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
-| 3 | lora_jailbreak_classifier_modernbert-base_model | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
-| 4 | Jailbreak-Detector-Large | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
-| 5 | prompt-injection-defender-base-v1 | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
+| 1 | protectai/deberta | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
+| 2 | jackhhao/jailbreak | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
+| 3 | llm-semantic-router/lora | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
+| 4 | madhurjindal/jailbreak | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
+| 5 | testsavantai/prompt | 1.000 | 100.00% | 100.00% | 3 | 3 | 0 | 0 |
 
 #### probes.dan.DanInTheWild
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | jailbreak-classifier | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
-| 2 | Jailbreak-Detector-Large | 0.992 | 100.00% | 98.44% | 63 | 64 | 0 | 1 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.933 | 100.00% | 87.50% | 56 | 64 | 0 | 8 |
-| 4 | prompt-injection-defender-base-v1 | 0.887 | 100.00% | 79.69% | 51 | 64 | 0 | 13 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.829 | 97.87% | 71.88% | 46 | 63 | 1 | 18 |
+| 1 | jackhhao/jailbreak | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
+| 2 | madhurjindal/jailbreak | 0.992 | 100.00% | 98.44% | 63 | 64 | 0 | 1 |
+| 3 | protectai/deberta | 0.933 | 100.00% | 87.50% | 56 | 64 | 0 | 8 |
+| 4 | testsavantai/prompt | 0.887 | 100.00% | 79.69% | 51 | 64 | 0 | 13 |
+| 5 | llm-semantic-router/lora | 0.829 | 97.87% | 71.88% | 46 | 63 | 1 | 18 |
 
-**Key findings:** Models showed excellent performance on structured DAN attacks (F1 = 1.000), with **jailbreak-classifier** achieving perfect detection on real-world DAN variants. This is unsurprising given that DAN attacks are widely known and studied in the community.
+**Key findings:** Models showed excellent performance on structured DAN attacks (F1 = 1.000), with **jackhhao/jailbreak** achieving perfect detection on real-world DAN variants. This is unsurprising given that DAN attacks are widely known and studied in the community.
 
 ### DRA Attacks
 
@@ -287,13 +291,13 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 1.000 | 100.00% | 100.00% | 28 | 28 | 0 | 0 |
-| 2 | Jailbreak-Detector-Large | 1.000 | 100.00% | 100.00% | 28 | 28 | 0 | 0 |
-| 3 | prompt-injection-defender-base-v1 | 1.000 | 100.00% | 100.00% | 28 | 28 | 0 | 0 |
-| 4 | jailbreak-classifier | 0.943 | 100.00% | 89.29% | 25 | 28 | 0 | 3 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 28 | 0 | 28 |
+| 1 | protectai/deberta | 1.000 | 100.00% | 100.00% | 28 | 28 | 0 | 0 |
+| 2 | madhurjindal/jailbreak | 1.000 | 100.00% | 100.00% | 28 | 28 | 0 | 0 |
+| 3 | testsavantai/prompt | 1.000 | 100.00% | 100.00% | 28 | 28 | 0 | 0 |
+| 4 | jackhhao/jailbreak | 0.943 | 100.00% | 89.29% | 25 | 28 | 0 | 3 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 28 | 0 | 28 |
 
-**Key findings:** Three models achieved perfect detection (F1 = 1.000): **deberta-v3-base-prompt-injection-v2**, **Jailbreak-Detector-Large**, and **prompt-injection-defender-base-v1**.
+**Key findings:** Three models achieved perfect detection (F1 = 1.000): **protectai/deberta**, **madhurjindal/jailbreak**, and **testsavantai/prompt**.
 
 ### Encoding Attacks
 
@@ -313,154 +317,154 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.694 | 100.00% | 53.12% | 68 | 126 | 0 | 60 |
-| 2 | prompt-injection-defender-base-v1 | 0.520 | 100.00% | 35.16% | 45 | 126 | 0 | 83 |
-| 3 | jailbreak-classifier | 0.503 | 100.00% | 33.59% | 43 | 126 | 0 | 85 |
-| 4 | Jailbreak-Detector-Large | 0.305 | 100.00% | 17.97% | 23 | 126 | 0 | 105 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 126 | 0 | 128 |
+| 1 | protectai/deberta | 0.694 | 100.00% | 53.12% | 68 | 126 | 0 | 60 |
+| 2 | testsavantai/prompt | 0.520 | 100.00% | 35.16% | 45 | 126 | 0 | 83 |
+| 3 | jackhhao/jailbreak | 0.503 | 100.00% | 33.59% | 43 | 126 | 0 | 85 |
+| 4 | madhurjindal/jailbreak | 0.305 | 100.00% | 17.97% | 23 | 126 | 0 | 105 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 126 | 0 | 128 |
 
 #### probes.encoding.InjectAtbash
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.601 | 100.00% | 42.97% | 55 | 128 | 0 | 73 |
-| 2 | jailbreak-classifier | 0.400 | 100.00% | 25.00% | 32 | 128 | 0 | 96 |
-| 3 | prompt-injection-defender-base-v1 | 0.316 | 100.00% | 18.75% | 24 | 128 | 0 | 104 |
-| 4 | Jailbreak-Detector-Large | 0.293 | 100.00% | 17.19% | 22 | 128 | 0 | 106 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 1 | protectai/deberta | 0.601 | 100.00% | 42.97% | 55 | 128 | 0 | 73 |
+| 2 | jackhhao/jailbreak | 0.400 | 100.00% | 25.00% | 32 | 128 | 0 | 96 |
+| 3 | testsavantai/prompt | 0.316 | 100.00% | 18.75% | 24 | 128 | 0 | 104 |
+| 4 | madhurjindal/jailbreak | 0.293 | 100.00% | 17.19% | 22 | 128 | 0 | 106 |
+| 5 | llm-semantic-router/lora | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
 
 #### probes.encoding.InjectBase16
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.638 | 100.00% | 46.88% | 60 | 128 | 0 | 68 |
-| 2 | jailbreak-classifier | 0.335 | 81.82% | 21.09% | 27 | 122 | 6 | 101 |
-| 3 | prompt-injection-defender-base-v1 | 0.305 | 100.00% | 17.97% | 23 | 128 | 0 | 105 |
-| 4 | Jailbreak-Detector-Large | 0.222 | 100.00% | 12.50% | 16 | 128 | 0 | 112 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 1 | protectai/deberta | 0.638 | 100.00% | 46.88% | 60 | 128 | 0 | 68 |
+| 2 | jackhhao/jailbreak | 0.335 | 81.82% | 21.09% | 27 | 122 | 6 | 101 |
+| 3 | testsavantai/prompt | 0.305 | 100.00% | 17.97% | 23 | 128 | 0 | 105 |
+| 4 | madhurjindal/jailbreak | 0.222 | 100.00% | 12.50% | 16 | 128 | 0 | 112 |
+| 5 | llm-semantic-router/lora | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
 
 #### probes.encoding.InjectBase2048
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.620 | 98.31% | 45.31% | 58 | 127 | 1 | 70 |
-| 2 | prompt-injection-defender-base-v1 | 0.537 | 100.00% | 36.72% | 47 | 128 | 0 | 81 |
-| 3 | jailbreak-classifier | 0.359 | 100.00% | 21.88% | 28 | 128 | 0 | 100 |
-| 4 | Jailbreak-Detector-Large | 0.348 | 100.00% | 21.09% | 27 | 128 | 0 | 101 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.031 | 100.00% | 1.56% | 2 | 128 | 0 | 126 |
+| 1 | protectai/deberta | 0.620 | 98.31% | 45.31% | 58 | 127 | 1 | 70 |
+| 2 | testsavantai/prompt | 0.537 | 100.00% | 36.72% | 47 | 128 | 0 | 81 |
+| 3 | jackhhao/jailbreak | 0.359 | 100.00% | 21.88% | 28 | 128 | 0 | 100 |
+| 4 | madhurjindal/jailbreak | 0.348 | 100.00% | 21.09% | 27 | 128 | 0 | 101 |
+| 5 | llm-semantic-router/lora | 0.031 | 100.00% | 1.56% | 2 | 128 | 0 | 126 |
 
 #### probes.encoding.InjectBase32
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.586 | 100.00% | 41.41% | 53 | 128 | 0 | 75 |
-| 2 | prompt-injection-defender-base-v1 | 0.410 | 100.00% | 25.78% | 33 | 128 | 0 | 95 |
-| 3 | jailbreak-classifier | 0.366 | 83.33% | 23.44% | 30 | 122 | 6 | 98 |
-| 4 | Jailbreak-Detector-Large | 0.305 | 100.00% | 17.97% | 23 | 128 | 0 | 105 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 1 | protectai/deberta | 0.586 | 100.00% | 41.41% | 53 | 128 | 0 | 75 |
+| 2 | testsavantai/prompt | 0.410 | 100.00% | 25.78% | 33 | 128 | 0 | 95 |
+| 3 | jackhhao/jailbreak | 0.366 | 83.33% | 23.44% | 30 | 122 | 6 | 98 |
+| 4 | madhurjindal/jailbreak | 0.305 | 100.00% | 17.97% | 23 | 128 | 0 | 105 |
+| 5 | llm-semantic-router/lora | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
 
 #### probes.encoding.InjectBase64
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.694 | 100.00% | 53.12% | 68 | 128 | 0 | 60 |
-| 2 | prompt-injection-defender-base-v1 | 0.494 | 100.00% | 32.81% | 42 | 128 | 0 | 86 |
-| 3 | jailbreak-classifier | 0.473 | 97.56% | 31.25% | 40 | 127 | 1 | 88 |
-| 4 | Jailbreak-Detector-Large | 0.348 | 100.00% | 21.09% | 27 | 128 | 0 | 101 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 1 | protectai/deberta | 0.694 | 100.00% | 53.12% | 68 | 128 | 0 | 60 |
+| 2 | testsavantai/prompt | 0.494 | 100.00% | 32.81% | 42 | 128 | 0 | 86 |
+| 3 | jackhhao/jailbreak | 0.473 | 97.56% | 31.25% | 40 | 127 | 1 | 88 |
+| 4 | madhurjindal/jailbreak | 0.348 | 100.00% | 21.09% | 27 | 128 | 0 | 101 |
+| 5 | llm-semantic-router/lora | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
 
 #### probes.encoding.InjectBraille
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 0.667 | 100.00% | 50.00% | 64 | 128 | 0 | 64 |
-| 2 | deberta-v3-base-prompt-injection-v2 | 0.578 | 100.00% | 40.62% | 52 | 128 | 0 | 76 |
-| 3 | jailbreak-classifier | 0.303 | 95.83% | 17.97% | 23 | 127 | 1 | 105 |
-| 4 | Jailbreak-Detector-Large | 0.293 | 100.00% | 17.19% | 22 | 128 | 0 | 106 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | testsavantai/prompt | 0.667 | 100.00% | 50.00% | 64 | 128 | 0 | 64 |
+| 2 | protectai/deberta | 0.578 | 100.00% | 40.62% | 52 | 128 | 0 | 76 |
+| 3 | jackhhao/jailbreak | 0.303 | 95.83% | 17.97% | 23 | 127 | 1 | 105 |
+| 4 | madhurjindal/jailbreak | 0.293 | 100.00% | 17.19% | 22 | 128 | 0 | 106 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.encoding.InjectEcoji
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.690 | 98.55% | 53.12% | 68 | 127 | 1 | 60 |
-| 2 | prompt-injection-defender-base-v1 | 0.638 | 100.00% | 46.88% | 60 | 128 | 0 | 68 |
-| 3 | Jailbreak-Detector-Large | 0.390 | 100.00% | 24.22% | 31 | 128 | 0 | 97 |
-| 4 | jailbreak-classifier | 0.352 | 90.32% | 21.88% | 28 | 125 | 3 | 100 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 1 | protectai/deberta | 0.690 | 98.55% | 53.12% | 68 | 127 | 1 | 60 |
+| 2 | testsavantai/prompt | 0.638 | 100.00% | 46.88% | 60 | 128 | 0 | 68 |
+| 3 | madhurjindal/jailbreak | 0.390 | 100.00% | 24.22% | 31 | 128 | 0 | 97 |
+| 4 | jackhhao/jailbreak | 0.352 | 90.32% | 21.88% | 28 | 125 | 3 | 100 |
+| 5 | llm-semantic-router/lora | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
 
 #### probes.encoding.InjectHex
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.639 | 96.83% | 47.66% | 61 | 126 | 2 | 67 |
-| 2 | jailbreak-classifier | 0.395 | 94.12% | 25.00% | 32 | 126 | 2 | 96 |
-| 3 | prompt-injection-defender-base-v1 | 0.327 | 100.00% | 19.53% | 25 | 128 | 0 | 103 |
-| 4 | Jailbreak-Detector-Large | 0.131 | 100.00% | 7.03% | 9 | 128 | 0 | 119 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 1 | protectai/deberta | 0.639 | 96.83% | 47.66% | 61 | 126 | 2 | 67 |
+| 2 | jackhhao/jailbreak | 0.395 | 94.12% | 25.00% | 32 | 126 | 2 | 96 |
+| 3 | testsavantai/prompt | 0.327 | 100.00% | 19.53% | 25 | 128 | 0 | 103 |
+| 4 | madhurjindal/jailbreak | 0.131 | 100.00% | 7.03% | 9 | 128 | 0 | 119 |
+| 5 | llm-semantic-router/lora | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
 
 #### probes.encoding.InjectMorse
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.638 | 100.00% | 46.88% | 60 | 126 | 0 | 68 |
-| 2 | prompt-injection-defender-base-v1 | 0.586 | 100.00% | 41.41% | 53 | 126 | 0 | 75 |
-| 3 | Jailbreak-Detector-Large | 0.369 | 100.00% | 22.66% | 29 | 126 | 0 | 99 |
-| 4 | jailbreak-classifier | 0.316 | 100.00% | 18.75% | 24 | 126 | 0 | 104 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.031 | 100.00% | 1.56% | 2 | 126 | 0 | 126 |
+| 1 | protectai/deberta | 0.638 | 100.00% | 46.88% | 60 | 126 | 0 | 68 |
+| 2 | testsavantai/prompt | 0.586 | 100.00% | 41.41% | 53 | 126 | 0 | 75 |
+| 3 | madhurjindal/jailbreak | 0.369 | 100.00% | 22.66% | 29 | 126 | 0 | 99 |
+| 4 | jackhhao/jailbreak | 0.316 | 100.00% | 18.75% | 24 | 126 | 0 | 104 |
+| 5 | llm-semantic-router/lora | 0.031 | 100.00% | 1.56% | 2 | 126 | 0 | 126 |
 
 #### probes.encoding.InjectNato
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.611 | 90.77% | 46.09% | 59 | 122 | 6 | 69 |
-| 2 | Jailbreak-Detector-Large | 0.282 | 100.00% | 16.41% | 21 | 128 | 0 | 107 |
-| 3 | prompt-injection-defender-base-v1 | 0.270 | 100.00% | 15.62% | 20 | 128 | 0 | 108 |
-| 4 | jailbreak-classifier | 0.194 | 87.50% | 10.94% | 14 | 126 | 2 | 114 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.046 | 100.00% | 2.34% | 3 | 128 | 0 | 125 |
+| 1 | protectai/deberta | 0.611 | 90.77% | 46.09% | 59 | 122 | 6 | 69 |
+| 2 | madhurjindal/jailbreak | 0.282 | 100.00% | 16.41% | 21 | 128 | 0 | 107 |
+| 3 | testsavantai/prompt | 0.270 | 100.00% | 15.62% | 20 | 128 | 0 | 108 |
+| 4 | jackhhao/jailbreak | 0.194 | 87.50% | 10.94% | 14 | 126 | 2 | 114 |
+| 5 | llm-semantic-router/lora | 0.046 | 100.00% | 2.34% | 3 | 128 | 0 | 125 |
 
 #### probes.encoding.InjectROT13
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.571 | 96.30% | 40.62% | 52 | 126 | 2 | 76 |
-| 2 | jailbreak-classifier | 0.304 | 80.00% | 18.75% | 24 | 122 | 6 | 104 |
-| 3 | prompt-injection-defender-base-v1 | 0.270 | 100.00% | 15.62% | 20 | 128 | 0 | 108 |
-| 4 | Jailbreak-Detector-Large | 0.171 | 100.00% | 9.38% | 12 | 128 | 0 | 116 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | protectai/deberta | 0.571 | 96.30% | 40.62% | 52 | 126 | 2 | 76 |
+| 2 | jackhhao/jailbreak | 0.304 | 80.00% | 18.75% | 24 | 122 | 6 | 104 |
+| 3 | testsavantai/prompt | 0.270 | 100.00% | 15.62% | 20 | 128 | 0 | 108 |
+| 4 | madhurjindal/jailbreak | 0.171 | 100.00% | 9.38% | 12 | 128 | 0 | 116 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.encoding.InjectUU
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.687 | 100.00% | 52.34% | 67 | 128 | 0 | 61 |
-| 2 | prompt-injection-defender-base-v1 | 0.562 | 100.00% | 39.06% | 50 | 128 | 0 | 78 |
-| 3 | jailbreak-classifier | 0.415 | 94.44% | 26.56% | 34 | 126 | 2 | 94 |
-| 4 | Jailbreak-Detector-Large | 0.327 | 100.00% | 19.53% | 25 | 128 | 0 | 103 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.031 | 100.00% | 1.56% | 2 | 128 | 0 | 126 |
+| 1 | protectai/deberta | 0.687 | 100.00% | 52.34% | 67 | 128 | 0 | 61 |
+| 2 | testsavantai/prompt | 0.562 | 100.00% | 39.06% | 50 | 128 | 0 | 78 |
+| 3 | jackhhao/jailbreak | 0.415 | 94.44% | 26.56% | 34 | 126 | 2 | 94 |
+| 4 | madhurjindal/jailbreak | 0.327 | 100.00% | 19.53% | 25 | 128 | 0 | 103 |
+| 5 | llm-semantic-router/lora | 0.031 | 100.00% | 1.56% | 2 | 128 | 0 | 126 |
 
 #### probes.encoding.InjectUnicodeTagChars
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 0.667 | 100.00% | 50.00% | 64 | 128 | 0 | 64 |
-| 2 | deberta-v3-base-prompt-injection-v2 | 0.545 | 100.00% | 37.50% | 48 | 128 | 0 | 80 |
-| 3 | jailbreak-classifier | 0.338 | 100.00% | 20.31% | 26 | 128 | 0 | 102 |
-| 4 | Jailbreak-Detector-Large | 0.234 | 100.00% | 13.28% | 17 | 128 | 0 | 111 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | testsavantai/prompt | 0.667 | 100.00% | 50.00% | 64 | 128 | 0 | 64 |
+| 2 | protectai/deberta | 0.545 | 100.00% | 37.50% | 48 | 128 | 0 | 80 |
+| 3 | jackhhao/jailbreak | 0.338 | 100.00% | 20.31% | 26 | 128 | 0 | 102 |
+| 4 | madhurjindal/jailbreak | 0.234 | 100.00% | 13.28% | 17 | 128 | 0 | 111 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.encoding.InjectZalgo
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.687 | 100.00% | 52.34% | 67 | 128 | 0 | 61 |
-| 2 | prompt-injection-defender-base-v1 | 0.663 | 98.46% | 50.00% | 64 | 127 | 1 | 64 |
-| 3 | jailbreak-classifier | 0.410 | 100.00% | 25.78% | 33 | 128 | 0 | 95 |
-| 4 | Jailbreak-Detector-Large | 0.348 | 100.00% | 21.09% | 27 | 128 | 0 | 101 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.046 | 100.00% | 2.34% | 3 | 128 | 0 | 125 |
+| 1 | protectai/deberta | 0.687 | 100.00% | 52.34% | 67 | 128 | 0 | 61 |
+| 2 | testsavantai/prompt | 0.663 | 98.46% | 50.00% | 64 | 127 | 1 | 64 |
+| 3 | jackhhao/jailbreak | 0.410 | 100.00% | 25.78% | 33 | 128 | 0 | 95 |
+| 4 | madhurjindal/jailbreak | 0.348 | 100.00% | 21.09% | 27 | 128 | 0 | 101 |
+| 5 | llm-semantic-router/lora | 0.046 | 100.00% | 2.34% | 3 | 128 | 0 | 125 |
 
 
-**Key findings:** **deberta-v3-base-prompt-injection-v2** consistently ranked #1 across most encoding attacks (F1 scores 0.571-0.694). ROT13 and NATO phonetic alphabet were the hardest to detect.
+**Key findings:** **protectai/deberta** consistently ranked #1 across most encoding attacks (F1 scores 0.571-0.694). ROT13 and NATO phonetic alphabet were the hardest to detect.
 
 ### Goodside Tag Attack
 
@@ -476,13 +480,13 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 0.667 | 100.00% | 50.00% | 32 | 64 | 0 | 32 |
-| 2 | Jailbreak-Detector-Large | 0.400 | 100.00% | 25.00% | 16 | 64 | 0 | 48 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
-| 4 | jailbreak-classifier | 0.000 | 0.00% | 0.00% | 0 | 63 | 1 | 64 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 1 | testsavantai/prompt | 0.667 | 100.00% | 50.00% | 32 | 64 | 0 | 32 |
+| 2 | madhurjindal/jailbreak | 0.400 | 100.00% | 25.00% | 16 | 64 | 0 | 48 |
+| 3 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 4 | jackhhao/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 63 | 1 | 64 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
 
-**Key findings:** **prompt-injection-defender-base-v1** performed best (F1 = 0.667), while **deberta-v3-base-prompt-injection-v2** surprisingly failed completely (F1 = 0.000).
+**Key findings:** **testsavantai/prompt** performed best (F1 = 0.667), while **protectai/deberta** surprisingly failed completely (F1 = 0.000).
 
 ### Latent Injection Attacks
 
@@ -498,91 +502,91 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 0.338 | 100.00% | 20.31% | 26 | 128 | 0 | 102 |
-| 2 | Jailbreak-Detector-Large | 0.145 | 100.00% | 7.81% | 10 | 128 | 0 | 118 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
-| 4 | jailbreak-classifier | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | testsavantai/prompt | 0.338 | 100.00% | 20.31% | 26 | 128 | 0 | 102 |
+| 2 | madhurjindal/jailbreak | 0.145 | 100.00% | 7.81% | 10 | 128 | 0 | 118 |
+| 3 | protectai/deberta | 0.016 | 100.00% | 0.78% | 1 | 128 | 0 | 127 |
+| 4 | jackhhao/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.latentinjection.LatentInjectionFactSnippetLegal
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 0.325 | 81.25% | 20.31% | 26 | 122 | 6 | 102 |
-| 2 | jailbreak-classifier | 0.197 | 100.00% | 10.94% | 14 | 128 | 0 | 114 |
-| 3 | lora_jailbreak_classifier_modernbert-base_model | 0.145 | 100.00% | 7.81% | 10 | 128 | 0 | 118 |
-| 4 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 5 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | testsavantai/prompt | 0.325 | 81.25% | 20.31% | 26 | 122 | 6 | 102 |
+| 2 | jackhhao/jailbreak | 0.197 | 100.00% | 10.94% | 14 | 128 | 0 | 114 |
+| 3 | llm-semantic-router/lora | 0.145 | 100.00% | 7.81% | 10 | 128 | 0 | 118 |
+| 4 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 5 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.latentinjection.LatentInjectionReport
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | jailbreak-classifier | 0.503 | 100.00% | 33.59% | 43 | 128 | 0 | 85 |
-| 2 | prompt-injection-defender-base-v1 | 0.210 | 100.00% | 11.72% | 15 | 128 | 0 | 113 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 4 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 5 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | jackhhao/jailbreak | 0.503 | 100.00% | 33.59% | 43 | 128 | 0 | 85 |
+| 2 | testsavantai/prompt | 0.210 | 100.00% | 11.72% | 15 | 128 | 0 | 113 |
+| 3 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 4 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 5 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.latentinjection.LatentInjectionResume
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | jailbreak-classifier | 0.145 | 100.00% | 7.81% | 10 | 128 | 0 | 118 |
-| 2 | Jailbreak-Detector-Large | 0.131 | 100.00% | 7.03% | 9 | 128 | 0 | 119 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 4 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 5 | prompt-injection-defender-base-v1 | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | jackhhao/jailbreak | 0.145 | 100.00% | 7.81% | 10 | 128 | 0 | 118 |
+| 2 | madhurjindal/jailbreak | 0.131 | 100.00% | 7.03% | 9 | 128 | 0 | 119 |
+| 3 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 4 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 5 | testsavantai/prompt | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.latentinjection.LatentInjectionTranslationEnFr
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.714 | 100.00% | 55.47% | 71 | 128 | 0 | 57 |
-| 2 | prompt-injection-defender-base-v1 | 0.520 | 100.00% | 35.16% | 45 | 128 | 0 | 83 |
-| 3 | jailbreak-classifier | 0.420 | 100.00% | 26.56% | 34 | 128 | 0 | 94 |
-| 4 | Jailbreak-Detector-Large | 0.061 | 100.00% | 3.12% | 4 | 128 | 0 | 124 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 1 | protectai/deberta | 0.714 | 100.00% | 55.47% | 71 | 128 | 0 | 57 |
+| 2 | testsavantai/prompt | 0.520 | 100.00% | 35.16% | 45 | 128 | 0 | 83 |
+| 3 | jackhhao/jailbreak | 0.420 | 100.00% | 26.56% | 34 | 128 | 0 | 94 |
+| 4 | madhurjindal/jailbreak | 0.061 | 100.00% | 3.12% | 4 | 128 | 0 | 124 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
 
 #### probes.latentinjection.LatentInjectionTranslationEnZh
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 0.769 | 100.00% | 62.50% | 80 | 127 | 0 | 48 |
-| 2 | prompt-injection-defender-base-v1 | 0.554 | 100.00% | 38.28% | 49 | 127 | 0 | 79 |
-| 3 | jailbreak-classifier | 0.476 | 100.00% | 31.25% | 40 | 127 | 0 | 88 |
-| 4 | Jailbreak-Detector-Large | 0.158 | 100.00% | 8.59% | 11 | 127 | 0 | 117 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 127 | 0 | 128 |
+| 1 | protectai/deberta | 0.769 | 100.00% | 62.50% | 80 | 127 | 0 | 48 |
+| 2 | testsavantai/prompt | 0.554 | 100.00% | 38.28% | 49 | 127 | 0 | 79 |
+| 3 | jackhhao/jailbreak | 0.476 | 100.00% | 31.25% | 40 | 127 | 0 | 88 |
+| 4 | madhurjindal/jailbreak | 0.158 | 100.00% | 8.59% | 11 | 127 | 0 | 117 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 127 | 0 | 128 |
 
 #### probes.latentinjection.LatentJailbreak
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | jailbreak-classifier | 0.139 | 36.67% | 8.59% | 11 | 109 | 19 | 117 |
-| 2 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 3 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 4 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
-| 5 | prompt-injection-defender-base-v1 | 0.000 | 0.00% | 0.00% | 0 | 116 | 12 | 128 |
+| 1 | jackhhao/jailbreak | 0.139 | 36.67% | 8.59% | 11 | 109 | 19 | 117 |
+| 2 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 3 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 4 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 128 | 0 | 128 |
+| 5 | testsavantai/prompt | 0.000 | 0.00% | 0.00% | 0 | 116 | 12 | 128 |
 
 #### probes.latentinjection.LatentWhois
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | jailbreak-classifier | 0.561 | 97.78% | 39.29% | 132 | 333 | 3 | 204 |
-| 2 | prompt-injection-defender-base-v1 | 0.281 | 88.89% | 16.67% | 56 | 329 | 7 | 280 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.221 | 95.45% | 12.50% | 42 | 334 | 2 | 294 |
-| 4 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 336 | 0 | 336 |
-| 5 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 336 | 0 | 336 |
+| 1 | jackhhao/jailbreak | 0.561 | 97.78% | 39.29% | 132 | 333 | 3 | 204 |
+| 2 | testsavantai/prompt | 0.281 | 88.89% | 16.67% | 56 | 329 | 7 | 280 |
+| 3 | protectai/deberta | 0.221 | 95.45% | 12.50% | 42 | 334 | 2 | 294 |
+| 4 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 336 | 0 | 336 |
+| 5 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 336 | 0 | 336 |
 
 #### probes.latentinjection.LatentWhoisSnippet
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | jailbreak-classifier | 0.537 | 100.00% | 36.72% | 47 | 126 | 0 | 81 |
-| 2 | deberta-v3-base-prompt-injection-v2 | 0.090 | 100.00% | 4.69% | 6 | 126 | 0 | 122 |
-| 3 | prompt-injection-defender-base-v1 | 0.061 | 100.00% | 3.12% | 4 | 126 | 0 | 124 |
-| 4 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 126 | 0 | 128 |
-| 5 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 126 | 0 | 128 |
+| 1 | jackhhao/jailbreak | 0.537 | 100.00% | 36.72% | 47 | 126 | 0 | 81 |
+| 2 | protectai/deberta | 0.090 | 100.00% | 4.69% | 6 | 126 | 0 | 122 |
+| 3 | testsavantai/prompt | 0.061 | 100.00% | 3.12% | 4 | 126 | 0 | 124 |
+| 4 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 126 | 0 | 128 |
+| 5 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 126 | 0 | 128 |
 
 **Key findings:** **Translation-based attacks** were easiest to detect (F1 = 0.714-0.769 for deberta-v3), while **resume and jailbreak** latent attacks were extremely difficult to detect (F1 = 0.000 for most models).
 
@@ -600,23 +604,23 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | lora_jailbreak_classifier_modernbert-base_model | 0.452 | 95.00% | 29.69% | 19 | 63 | 1 | 45 |
-| 2 | prompt-injection-defender-base-v1 | 0.090 | 100.00% | 4.69% | 3 | 64 | 0 | 61 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
-| 4 | jailbreak-classifier | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
-| 5 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 1 | llm-semantic-router/lora | 0.452 | 95.00% | 29.69% | 19 | 63 | 1 | 45 |
+| 2 | testsavantai/prompt | 0.090 | 100.00% | 4.69% | 3 | 64 | 0 | 61 |
+| 3 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 4 | jackhhao/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 5 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
 
 #### probes.phrasing.PastTense
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | lora_jailbreak_classifier_modernbert-base_model | 0.400 | 100.00% | 25.00% | 16 | 64 | 0 | 48 |
-| 2 | prompt-injection-defender-base-v1 | 0.090 | 100.00% | 4.69% | 3 | 64 | 0 | 61 |
-| 3 | deberta-v3-base-prompt-injection-v2 | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
-| 4 | jailbreak-classifier | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
-| 5 | Jailbreak-Detector-Large | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 1 | llm-semantic-router/lora | 0.400 | 100.00% | 25.00% | 16 | 64 | 0 | 48 |
+| 2 | testsavantai/prompt | 0.090 | 100.00% | 4.69% | 3 | 64 | 0 | 61 |
+| 3 | protectai/deberta | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 4 | jackhhao/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 5 | madhurjindal/jailbreak | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
 
-**Key findings:** All models performed extremely poorly (F1 = 0.000 for most). Only **lora_jailbreak_classifier_modernbert-base_model** showed detection capability (F1 = 0.40-0.45).
+**Key findings:** All models performed extremely poorly (F1 = 0.000 for most). Only **llm-semantic-router/lora** showed detection capability (F1 = 0.40-0.45).
 
 ### PromptInject Attacks
 
@@ -639,33 +643,33 @@ Model abbreviations used in tables below:
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
-| 2 | deberta-v3-base-prompt-injection-v2 | 0.984 | 100.00% | 96.88% | 62 | 64 | 0 | 2 |
-| 3 | Jailbreak-Detector-Large | 0.680 | 100.00% | 51.56% | 33 | 64 | 0 | 31 |
-| 4 | jailbreak-classifier | 0.061 | 100.00% | 3.12% | 2 | 64 | 0 | 62 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 1 | testsavantai/prompt | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
+| 2 | protectai/deberta | 0.984 | 100.00% | 96.88% | 62 | 64 | 0 | 2 |
+| 3 | madhurjindal/jailbreak | 0.680 | 100.00% | 51.56% | 33 | 64 | 0 | 31 |
+| 4 | jackhhao/jailbreak | 0.061 | 100.00% | 3.12% | 2 | 64 | 0 | 62 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
 
 #### probes.promptinject.HijackKillHumans
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | prompt-injection-defender-base-v1 | 1.000 | 100.00% | 100.00% | 64 | 63 | 0 | 0 |
-| 2 | deberta-v3-base-prompt-injection-v2 | 0.992 | 100.00% | 98.44% | 63 | 63 | 0 | 1 |
-| 3 | Jailbreak-Detector-Large | 0.745 | 100.00% | 59.38% | 38 | 63 | 0 | 26 |
-| 4 | jailbreak-classifier | 0.145 | 100.00% | 7.81% | 5 | 63 | 0 | 59 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 63 | 0 | 64 |
+| 1 | testsavantai/prompt | 1.000 | 100.00% | 100.00% | 64 | 63 | 0 | 0 |
+| 2 | protectai/deberta | 0.992 | 100.00% | 98.44% | 63 | 63 | 0 | 1 |
+| 3 | madhurjindal/jailbreak | 0.745 | 100.00% | 59.38% | 38 | 63 | 0 | 26 |
+| 4 | jackhhao/jailbreak | 0.145 | 100.00% | 7.81% | 5 | 63 | 0 | 59 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 63 | 0 | 64 |
 
 #### probes.promptinject.HijackLongPrompt
 
 | Rank | Model | F1 Score | Precision | Recall | TP | TN | FP | FN |
 |------|-------|----------|-----------|--------|----|----|----|----|
-| 1 | deberta-v3-base-prompt-injection-v2 | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
-| 2 | prompt-injection-defender-base-v1 | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
-| 3 | Jailbreak-Detector-Large | 0.942 | 100.00% | 89.06% | 57 | 64 | 0 | 7 |
-| 4 | jailbreak-classifier | 0.720 | 100.00% | 56.25% | 36 | 64 | 0 | 28 |
-| 5 | lora_jailbreak_classifier_modernbert-base_model | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
+| 1 | protectai/deberta | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
+| 2 | testsavantai/prompt | 1.000 | 100.00% | 100.00% | 64 | 64 | 0 | 0 |
+| 3 | madhurjindal/jailbreak | 0.942 | 100.00% | 89.06% | 57 | 64 | 0 | 7 |
+| 4 | jackhhao/jailbreak | 0.720 | 100.00% | 56.25% | 36 | 64 | 0 | 28 |
+| 5 | llm-semantic-router/lora | 0.000 | 0.00% | 0.00% | 0 | 64 | 0 | 64 |
 
-**Key findings:** **prompt-injection-defender-base-v1** achieved perfect detection (F1 = 1.000) on all three PromptInject attacks. **deberta-v3-base-prompt-injection-v2** achieved near-perfect performance (F1 ≥ 0.984).
+**Key findings:** **testsavantai/prompt** achieved perfect detection (F1 = 1.000) on all three PromptInject attacks. **protectai/deberta** achieved near-perfect performance (F1 ≥ 0.984).
 
 ### Conclusion
 
