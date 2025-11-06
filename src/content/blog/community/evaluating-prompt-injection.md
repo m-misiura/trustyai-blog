@@ -23,7 +23,7 @@ In this blog post, we aim to partially tackle the aforementioned challenges by a
 We restricted the search space to guardrail models that are
 
 - open source
-- Transformer-based with a binary classifier head (i.e. `AutoModelsForSequenceClassification` models that produce scores for each of the two labels)
+- Transformer-based with a binary classifier head (i.e. `AutoModelForSequenceClassification` models that produce scores for each of the two labels)
 - fine-tuned on prompt injection data
 - downloadable from [Hugging Face Models Hub](https://huggingface.co/models). 
 
