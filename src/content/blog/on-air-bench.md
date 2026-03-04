@@ -4,6 +4,7 @@ description: 'Here is a sample of some basic Markdown syntax that can be used wh
 pubDate: 'Jul 21 2025'
 heroImage: '/blog-placeholder-3.jpg'
 track: 'community'
+tags: ['safety', 'benchmarks']
 authors: ['rob-geada']
 ---
 

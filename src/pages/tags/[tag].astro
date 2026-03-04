@@ -1,36 +1,63 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE } from '../../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getBaseUrl } from '../../utils/urls';
+
+const baseUrl = getBaseUrl();
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	const tags = [...new Set(posts.flatMap(post => post.data.tags ?? []))];
+	return tags.map(tag => ({
+		params: { tag },
+		props: { tag },
+	}));
+}
+
+const { tag } = Astro.props;
 
 const posts = (await getCollection('blog'))
-	.filter(post => post.data.track === 'community')
+	.filter(post => post.data.tags?.includes(tag))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Community - ${SITE_TITLE}`} description="Community posts featuring insights, discussions, and contributions from the TrustyAI community" />
+		<BaseHead title={`${tag} - ${SITE_TITLE}`} description={`Posts tagged "${tag}"`} />
 		<style>
 			main {
 				width: 960px;
 			}
-			.track-header {
+			.tag-header {
 				margin-bottom: 2rem;
 				text-align: center;
 			}
-			.track-title {
-				font-size: 2.5rem;
-				color: rgb(var(--accent));
+			.tag-title {
+				font-size: 2rem;
+				color: rgb(var(--black));
 				margin-bottom: 0.5rem;
 			}
-			.track-description {
-				font-size: 1.2rem;
+			.tag-label {
+				background: #f1f5f9;
+				color: #475569;
+				padding: 0.3rem 1rem;
+				border-radius: 1rem;
+				font-size: 1rem;
+			}
+			.back-link {
+				display: inline-block;
+				margin-bottom: 1rem;
 				color: rgb(var(--gray));
+				text-decoration: none;
+				font-size: 0.9rem;
+			}
+			.back-link:hover {
+				color: rgb(var(--accent));
 			}
 			ul {
 				display: flex;
@@ -101,19 +128,17 @@ const posts = (await getCollection('blog'))
 	<body>
 		<Header />
 		<main>
-			<div class="track-header">
-				<h1 class="track-title">👥 Community</h1>
-				<p class="track-description">
-					Insights, discussions, and contributions from the TrustyAI community
-				</p>
+			<div class="tag-header">
+				<a href={`${baseUrl}/tags`} class="back-link">&larr; All tags</a>
+				<h1 class="tag-title">Posts tagged <span class="tag-label">{tag}</span></h1>
 			</div>
-			
+
 			<section>
 				<ul>
 					{
 						posts.map((post) => (
 							<li>
-								<a href={post.id}>
+								<a href={`${baseUrl}/${post.id}`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
@@ -128,4 +153,4 @@ const posts = (await getCollection('blog'))
 		</main>
 		<Footer />
 	</body>
-</html> 
+</html>
