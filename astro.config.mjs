@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { visit } from 'unist-util-visit';
+import rehypeMermaid from 'rehype-mermaid';
 
 // Site configuration for https://blog.trustyai.org
 const siteUrl = 'https://blog.trustyai.org';
@@ -49,6 +50,11 @@ export default defineConfig({
 	base: basePath,
 	integrations: [mdx(), sitemap()],
 	markdown: {
+		syntaxHighlight: {
+			type: 'shiki',
+			excludeLangs: ['mermaid']
+		},
 		remarkPlugins: [remarkBaseUrl],
+		rehypePlugins: [[rehypeMermaid, { strategy: 'img-svg', dark: true, colorScheme: 'forest' }]]
 	},
 });
