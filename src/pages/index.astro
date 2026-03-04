@@ -6,6 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import { getBaseUrl } from '../utils/urls';
+const baseUrl = getBaseUrl();
 
 
 const posts = (await getCollection('blog')).sort(
@@ -40,18 +41,7 @@ const posts = (await getCollection('blog')).sort(
 				text-decoration: none;
 				transition: 0.2s ease;
 			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
+ul li img {
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
 			}
@@ -107,6 +97,24 @@ const posts = (await getCollection('blog')).sort(
 			ul a:hover img {
 				box-shadow: var(--box-shadow);
 			}
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.35rem;
+				margin-top: 0.5rem;
+			}
+			.tag {
+				background: #f1f5f9;
+				color: #475569;
+				padding: 0.15rem 0.5rem;
+				border-radius: 1rem;
+				font-size: 0.7rem;
+				text-decoration: none;
+				transition: background 0.2s ease;
+			}
+			.tag:hover {
+				background: #e2e8f0;
+			}
 			@media (max-width: 720px) {
 				ul {
 					gap: 0.5em;
@@ -115,13 +123,7 @@ const posts = (await getCollection('blog')).sort(
 					width: 100%;
 					text-align: center;
 				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-				.track-badge {
+.track-badge {
 					top: 0.5rem;
 					right: 0.5rem;
 				}
@@ -139,7 +141,7 @@ const posts = (await getCollection('blog')).sort(
 								<span class={`track-badge ${post.data.track}`}>
 									{post.data.track}
 								</span>
-								<a href={post.id}>
+								<a href={`${baseUrl}/blog/${post.id}`}>
 									<img width={720} height={360} src={post.data.heroImage} alt="" />
 									<h4 class="title">{post.data.title}</h4>
 									<p class="date">
@@ -147,6 +149,13 @@ const posts = (await getCollection('blog')).sort(
 										<FormattedDate date={post.data.pubDate} />
 									</p>
 								</a>
+								{post.data.tags && post.data.tags.length > 0 && (
+									<div class="tags">
+										{post.data.tags.map((tag) => (
+											<a href={`${baseUrl}/tags/${tag}`} class="tag">{tag}</a>
+										))}
+									</div>
+								)}
 							</li>
 						))
 					}
