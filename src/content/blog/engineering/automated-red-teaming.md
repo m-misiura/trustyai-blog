@@ -64,19 +64,16 @@ The attack success rate was **100%**: every adversarial prompt got the model to 
 
 ## Running it
 
-This feature is available as a Technology Preview in __Red Hat OpenShift AI 3.4__ and General Availability in __Red Hat Openshift AI 3.5__. You need the following components on your cluster:
+This feature is available as a Technology Preview in __Red Hat OpenShift AI 3.4__ and General Availability in __Red Hat Openshift AI 3.5__ and you can also run it using [Open Data Hub](https://github.com/opendatahub-io). You need the following components on your cluster:
 
-- __Data Science Pipelines__ (Kubeflow Pipelines backend) with a configured pipeline server
-- __KServe with vLLM__, serving at least two model endpoints: the target model under test and a challenger model for prompt generation.
-- __S3-compatible storage__ for pipeline artifacts and reports
 - __EvalHub__ for a simpler API-driven experience and MLflow integration
 - __An endpoint__ to a model to be tested (optionally, an additional endpoint to an abliterated model for the advanced attack techniques)
-- __Data Science Pipelines__ (Kubeflow Pipelines backend, optional) with a configured pipeline server for running the evaluation in your cluster
-- __S3-compatible storage__ for pipeline artifacts and reports between KFP steps
-- __MLFlow__ for tracking evaluations
+- __Data Science Pipelines__ (Kubeflow Pipelines backend, optional) with a configured pipeline server for running the evaluation in your cluster:
+
+    - __S3-compatible storage__ for pipeline artifacts and reports between KFP steps
+    - __MLFlow__ for tracking evaluations
+
 - Alternatively, you can run the same evaluation without KFP
-
-
 
 ![ART architecture diagram](/ART-architecture.svg)
 
