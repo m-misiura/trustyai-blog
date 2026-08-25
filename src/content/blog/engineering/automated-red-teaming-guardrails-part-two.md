@@ -151,10 +151,10 @@ Briefly, NeMo ships with a catalogue of pre-built rails, which can be activated 
 		height="900"
 		style="border: 0; display: block;"
 	></iframe>
-	<figcaption>Figure 1: Automated red teaming baseline scan report</figcaption>
+	<figcaption>Figure 4: Automated red teaming: LLM + HAP detector </figcaption>
 </figure>
 
-A scan (see Figure 2 above) for a LLM together with a single detector aimed at detecting hateful and profane speech resulted in a notable reduction in the attack success rate for the hate speech risk category, from 90% to xx%. This indicates that even a single guardrail can have a significant impact on the model's safety performance. 
+A scan (see Figure 4 above) for a LLM together with a single detector aimed at detecting hateful and profane speech resulted in a notable reduction in the attack success rate for the hate speech risk category, from 90% to xx%. This indicates that even a single guardrail can have a significant impact on the model's safety performance. 
 
 ## Next steps
 
