@@ -80,17 +80,17 @@ All guardrails techniques have different strengths and weaknesses, which are out
 
 **Table 1: Comparison of runtime guardrail techniques**
 
-| | Rules | Classifiers | LLM-as-judge |
+| Technique | What | Cost | Accuracy |
 |---|---|---|---|
-| **What** | Regex, keyword lists, entity detection | Lightweight ML models for specific risks | LLM evaluates content against natural-language policy |
-| **Cost** | Near zero | Low | High |
-| **Accuracy** | Exact for known patterns, brittle for nuance | Good for trained risks, needs data | Flexible, handles novel policies, but can be _"subjective"_ |
+| Rules | Regex, keyword lists, entity detection | Near zero | Exact for known patterns, brittle for nuance |
+| Classifiers | Lightweight ML models for specific risks | Low | Good for trained risks, needs data |
+| LLM-as-judge | LLM evaluates content against natural-language policy | High | Flexible, handles novel policies, but can be "subjective" |
 
 In practice, no single technique covers all risks and layering all three techniques to create a “defense in depth” stack of guardrails as visualised in Figure 3 is recommended.
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"fontSize": "22px"}, "flowchart": {"nodeSpacing": 55, "rankSpacing": 65, "padding": 25}}}%%
-flowchart LR
+flowchart TD
     A["Incoming<br/>message"] --> B
 
     subgraph INPUT["Input rails"]
@@ -141,7 +141,7 @@ Briefly, NeMo ships with a catalogue of pre-built rails, which can be activated 
 | `self_check` | LLM-as-judge | Prompt an LLM to evaluate input/output against your policy |
 
 
-## Guardrailed LLM scan analysis
+## Guardrailed LLM scan analysis and next steps
 
 <figure>
 	<iframe
@@ -154,8 +154,4 @@ Briefly, NeMo ships with a catalogue of pre-built rails, which can be activated 
 	<figcaption>Figure 4: Automated red teaming: LLM + HAP detector </figcaption>
 </figure>
 
-A scan (see Figure 4 above) for a LLM together with a single detector aimed at detecting hateful and profane speech resulted in a 20 % reduction in the attack success rate for the hate speech risk category, from 90% to 70%. This indicates that even a single guardrail can have an impact on the model's safety performance. 
-
-## Next steps
-
-In the next part of this blog post series, we will showcase how to combine multiple guardrails and evaluate effectiveness of different guardrail configurations using the developed ART pipeline.  
+A scan (see Figure 4 above) for a LLM together with a single detector aimed at detecting hateful and profane speech ([ibm-granite/granite-guardian-hap-38m](https://huggingface.co/ibm-granite/granite-guardian-hap-38m)) resulted in a 20 % reduction in the attack success rate for the hate speech risk category, from 90% to 70%. This indicates that even a single lightweight guardrail can have an impact on the model's safety performance. We also expect that deployment of a larger detector, such as [ibm-granite/granite-guardian-hap-125m](https://huggingface.co/ibm-granite/granite-guardian-hap-125m) would result in a further reduction in the attack success rate for the hate speech risk category; we will put this to the test in the next part of this blog post series. Moreover, we will showcase how to combine multiple guardrails and evaluate effectiveness of different guardrail configurations using the developed ART pipeline.  
