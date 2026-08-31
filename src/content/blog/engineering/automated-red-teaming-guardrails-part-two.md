@@ -31,7 +31,7 @@ tags: ['red-teaming', 'safety', 'garak', 'guardrails', 'evaluation']
 	}
 </style>
 
-> 
+> In this blog post, we will explore the results of running the Automated Red Teaming (ART) pipeline on a baseline LLM and discuss how to use these results to develop risk mitigation strategies. We will also evaluate the effectiveness of these strategies in reducing the model's vulnerability to adversarial attacks.
 
 ## Introduction
 In [the previous part]((https://blog.trustyai.org/blog/engineering/automated-red-teaming/)) of this blog post series, we introduced the Automated Red Teaming (ART) pipeline to highlight specific vulnerabilities of LLMs and showed that even a relatively straightforward adversarial attack strategy such as system prompt override can be used to effectively target LLMs. In this blog post, we will use the findings from running the ART pipeline to develop risk mitigation strategies and quantify their effectiveness.  
@@ -155,3 +155,7 @@ Briefly, NeMo ships with a catalogue of pre-built rails, which can be activated 
 </figure>
 
 A scan (see Figure 4 above) for a LLM together with a single detector aimed at detecting hateful and profane speech ([ibm-granite/granite-guardian-hap-38m](https://huggingface.co/ibm-granite/granite-guardian-hap-38m)) resulted in a 20 % reduction in the attack success rate for the hate speech risk category, from 90% to 70%. This indicates that even a single lightweight guardrail can have an impact on the model's safety performance. We also expect that deployment of a larger detector, such as [ibm-granite/granite-guardian-hap-125m](https://huggingface.co/ibm-granite/granite-guardian-hap-125m) would result in a further reduction in the attack success rate for the hate speech risk category; we will put this to the test in the next part of this blog post series. Moreover, we will showcase how to combine multiple guardrails and evaluate effectiveness of different guardrail configurations using the developed ART pipeline.  
+
+## Appendix
+
+To run the demo on your cluster, you can follow the instructions in written [here](https://github.com/m-misiura/demos/blob/main/automated-red-teaming/README.md)
